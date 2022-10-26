@@ -17,29 +17,108 @@
 //     }
 
 class HashStorage {
-    constructor(coctail, proparty, ingredients, recipe) {
-        //storage = {}
-        this.coctail = coctail;
-        this.proparty = proparty;
-        this.ingredients = ingredients;
-        this.recipe = recipe;
+    constructor() {
+        this.storage = {}
+
     }
     addValue(key, value) {
-        this.coctail[key] = value;
+        value.name = key
+        this.storage[key] = value;
     }
     getValue(key) {
-        return this.coctail[key];
+        return this.storage[key];
     }
     deleteValue(key) {
-        return delete this.coctail[key];
+        if (this.getValue(key)) {
+            delete this.storage[key];
+            return true
+        } else {
+            return false;
+        }   
     }
     getKeys() {
-        return Object.keys(this.coctail)
+        return Object.keys(this.storage)
     }
 }
 
 
-const coctailsStorage = new HashStorage('maxito');
-coctailsStorage.addValue('alcohol', 'yes');
+const coctailsStorage = new HashStorage();
+coctailsStorage.addValue('mahito', {
+    alcogol: true,
+    engradience: [{
+        name: 'белый ром',
+        amount: 50,
+        unit: 'мл',
+    },
+    {
+        name: 'сахарный сироп',
+        amount: 15,
+        unit: 'мл',
+    },
+    {
+        name: 'содовая',
+        amount: 100,
+        unit: 'мл',
+    },
+    {
+        name: 'лайм',
+        amount: 80,
+        unit: 'г',
+    },
+    {
+        name: 'мята',
+        amount: 3,
+        unit: 'г',
+    },
+    {
+        name: 'дробленый лед',
+        amount: 200,
+        unit: 'г',
+    }
+    ],
+    accessories: {
+        unit: 'шт',
+        things: [
+            {
+                name: 'хайбол',
+                amoutn: 1,
+            },
+            {
+                name: 'мадлер',
+                amoutn: 1,
+            },
+            {
+                name: 'джиггер',
+                amoutn: 1,
+            },
+            {
+                name: 'коктельная ложка',
+                amoutn: 1,
+            },
+            {
+                name: 'трубочка',
+                amoutn: 2,
+            },
+        ],
+    },
+    recept: ['Положи в хайбол лайм 3 дольки и подави мадлером', 'Возьми мяту 10 листиков в одну руку и хлопни по ним другой рукой', 'Положи мяту в хайбол', 'Наполни бокал дробленым льдом доверху', 'Добавь сахарный сироп 15 мл и белый ром 50 мл', 'Долей содовую доверху и аккуратно размешай коктейльной ложкой', 'Досыпь немного дробленого льда', 'Укрась веточкой мяты и долькой лайма'],
+});
 
-console.log(coctailsStorage);
+const btnDelete = document.getElementById('delete');
+btnDelete.onclick = function () {
+    const answer = prompt('Введите название напитка для удаления');
+
+    const isDelete = coctailsStorage.deleteValue(answer);
+    console.log(isDelete)
+    if (isDelete) {
+        alert('коктель удален')
+    } else {
+        alert('коктель не обнаружен')
+    }
+}
+
+const btnList = document.getElementById('list');
+btnList.onclick = function () {
+    
+    alert(coctailsStorage.getKeys())
+}
