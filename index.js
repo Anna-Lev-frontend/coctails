@@ -1,21 +1,3 @@
-// "use strict";
-
-// function HashStorage() {
-//         storage = {};
-//     }
-//     this.addValue = function(key, value) {
-//         this.storage[key] = value;
-//     }
-//     this.getValue = function(key) {
-//         return this.storage[key];
-//     }
-//     this.deleteValue = function(key) {
-//         return delete this.storage[key];
-//     }
-//     this.getKeys = function() {
-//         return Object.keys(this.storage)
-//     }
-
 class HashStorage {
     constructor() {
         this.storage = {}
@@ -34,7 +16,7 @@ class HashStorage {
             return true
         } else {
             return false;
-        }   
+        }
     }
     getKeys() {
         return Object.keys(this.storage)
@@ -43,7 +25,7 @@ class HashStorage {
 
 
 const coctailsStorage = new HashStorage();
-coctailsStorage.addValue('mahito', {
+coctailsStorage.addValue('Mahito', {
     alcogol: true,
     engradience: [{
         name: 'белый ром',
@@ -103,6 +85,187 @@ coctailsStorage.addValue('mahito', {
     },
     recept: ['Положи в хайбол лайм 3 дольки и подави мадлером', 'Возьми мяту 10 листиков в одну руку и хлопни по ним другой рукой', 'Положи мяту в хайбол', 'Наполни бокал дробленым льдом доверху', 'Добавь сахарный сироп 15 мл и белый ром 50 мл', 'Долей содовую доверху и аккуратно размешай коктейльной ложкой', 'Досыпь немного дробленого льда', 'Укрась веточкой мяты и долькой лайма'],
 });
+coctailsStorage.addValue('Margarita', {
+    alcogol: true,
+    engradience: [{
+        name: 'серебрянная текила',
+        amount: 50,
+        unit: 'мл',
+    },
+    {
+        name: 'трипл сек Fruko Schulz',
+        amount: 25,
+        unit: 'мл',
+    },
+    {
+        name: 'сахарный сироп',
+        amount: 10,
+        unit: 'мл',
+    },
+    {
+        name: 'лаймовый сок',
+        amount: 30,
+        unit: 'мл',
+    },
+    {
+        name: 'лайм',
+        amount: 10,
+        unit: 'г',
+    },
+    {
+        name: 'соль',
+        amount: 2,
+        unit: 'г',
+    },
+    {
+        name: 'лед в кубиках',
+        amount: 200,
+        unit: 'г',
+    }
+    ],
+    accessories: {
+        unit: 'шт',
+        things: [
+            {
+                name: 'бокал маргарита',
+                amoutn: 1,
+            },
+            {
+                name: 'шейкер',
+                amoutn: 1,
+            },
+            {
+                name: 'стрейнер',
+                amoutn: 1,
+            },
+            {
+                name: 'джиггер',
+                amoutn: 1,
+            },
+            {
+                name: 'пресс для цитрусовых',
+                amoutn: 1,
+            },
+        ],
+    },
+    recept: ['Сделай на бокале для маргариты соленую окаемку', 'Налей в шейкер лаймовый сок 30 мл, сахарный сироп 10 мл, ликер трипл сек 25 мл и серебряную текилу 50 мл', 'Наполни шейкер кубиками льда и взбей', 'Перелей через стрейнер в охлажденный бокал для маргариты', 'Укрась кружком лайма'],
+});
+coctailsStorage.addValue('Negroni', {
+    alcogol: true,
+    engradience: [{
+        name: 'лондонский сухой джин',
+        amount: 30,
+        unit: 'мл',
+    },
+    {
+        name: 'красный вермут',
+        amount: 30,
+        unit: 'мл',
+    },
+    {
+        name: 'красный биттер',
+        amount: 30,
+        unit: 'мл',
+    },
+    {
+        name: 'апельсиновая цедра',
+        amount: 1,
+        unit: 'шт',
+    },
+    {
+        name: 'лёд в кубиках',
+        amount: 120,
+        unit: 'г',
+    }
+    ],
+    accessories: {
+        unit: 'шт',
+        things: [
+            {
+                name: 'рокс',
+                amoutn: 1,
+            },
+            {
+                name: 'джиггер',
+                amoutn: 1,
+            },
+            {
+                name: 'коктельная ложка',
+                amoutn: 1,
+            },
+        ],
+    },
+    recept: ['Наполни рокс кубиками льда доверху', 'Налей в бокал красный вермут 30 мл и красный биттер 30 мл', 'Добавь джин 30 мл и размешай коктейльной ложкой', 'Укрась апельсиновой цедрой'],
+});
+coctailsStorage.addValue('SexOnTheBeach', {
+    alcogol: true,
+    engradience: [{
+        name: 'водка царская',
+        amount: 50,
+        unit: 'мл',
+    },
+    {
+        name: 'персиковый ликёр fruko schulz',
+        amount: 25,
+        unit: 'мл',
+    },
+    {
+        name: 'клюквенный сок',
+        amount: 40,
+        unit: 'мл',
+    },
+    {
+        name: 'ананасовый сок',
+        amount: 40,
+        unit: 'мл',
+    },
+    {
+        name: 'ананас',
+        amount: 15,
+        unit: 'г',
+    },
+    {
+        name: 'коктельная вишня красная',
+        amount: 5,
+        unit: 'г',
+    },
+    {
+        name: 'лёд в кубиках',
+        amount: 350,
+        unit: 'г',
+    }
+    ],
+    accessories: {
+        unit: 'шт',
+        things: [
+            {
+                name: 'слинг',
+                amoutn: 1,
+            },
+            {
+                name: 'шейкер',
+                amoutn: 1,
+            },
+            {
+                name: 'стрейнер',
+                amoutn: 1,
+            },
+            {
+                name: 'джиггер',
+                amoutn: 1,
+            },
+            {
+                name: 'трубочки',
+                amoutn: 2,
+            },
+            {
+                name: 'коктельная шпажка',
+                amoutn: 2,
+            }
+        ],
+    },
+    recept: ['Наполни слинг кубиками льда доверху', 'Налей в шейкер клюквенный сок 40 мл, ананасовый сок 40 мл, персиковый ликер 25 мл и водку 50 мл', 'Наполни шейкер кубиками льда и взбей', 'Перелей через стрейнер в слинг', 'Укрась кусочком ананаса и коктейльной вишней на шпажке'],
+});
 
 const btnDelete = document.getElementById('delete');
 btnDelete.onclick = function () {
@@ -119,6 +282,6 @@ btnDelete.onclick = function () {
 
 const btnList = document.getElementById('list');
 btnList.onclick = function () {
-    
+
     alert(coctailsStorage.getKeys())
 }
