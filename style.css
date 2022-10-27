@@ -18,10 +18,12 @@ body {
     transition: .5s;
 }
 
+
+/* 
 .button:hover {
     background-position: right center;
-}
-input[type='checkbox']{
+} */
+/* input[type='checkbox']{
     display:none;
 }
 label{
@@ -41,4 +43,4 @@ input[type='checkbox']:checked + label::before{
     border-radius: 50%;
     content: 'V';
     background-color: red;
-}
+} */

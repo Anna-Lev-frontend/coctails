@@ -13,26 +13,35 @@
     <!-- <button class="add-coctail">Введите рецепт</button>
     <button class="recipe">Рецепт напитка</button>
     <button class="delete-recipe">Удаление рецепта</button> -->
-
-    <div><button class="button" id='add'>Введите рецепт</button></div>
-    <div><button class="button" id='recepte'>Рецепт напитка</button></div>
-    <div><button class="button" id='delete'>Удаление рецепта</button></div>
-    
-    <div>
-        <button class="button" id='list'>Перечень всех коктелей</button>
-        
-        <input type="checkbox" id="Mahito" name="Coctails">
+    <section>
+        <input type="radio" class="rad" id="Mahito" checked name="Coctails" value = 'Махито'>
         <label for="Mahito">Махито</label>
 
-        <input type="checkbox" id="Margarita" name="Coctails">
+        <input type="radio" class="rad" id="Margarita" name="Coctails" value = 'Маргарита'>
         <label for="Margarita">Маргарита</label>
 
-        <input type="checkbox" id="Negroni" name="Coctails">
+        <input type="radio" class="rad" id="Negroni" name="Coctails" value = 'Негрони'>
         <label for="Negroni">Негрони</label>
 
-        <input type="checkbox" id="SexOnTheBeach" name="Coctails">
+        <input type="radio" class="rad" id="SexOnTheBeach" name="Coctails" value = 'Секс на пляже'>
         <label for="SexOnTheBeach">Секс на пляже</label>
-    </div>
+
+        <button class="button-add" id='add'>Введите рецепт</button>
+        <div class="out-add"></div>
+
+    </section>
+
+    <section>
+        <div><button class="button" id='recepte'>Рецепт напитка</button></div>
+    </section>
+
+    <section>
+        <div><button class="button" id='delete'>Удаление рецепта</button></div>
+    </section>
+
+    <section>
+        <div><button class="button" id='list'>Перечень всех коктелей</button> </div>
+    </section>
 
 
     <script src='/index.js'></script>

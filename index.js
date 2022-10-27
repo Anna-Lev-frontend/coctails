@@ -25,7 +25,7 @@ class HashStorage {
 
 
 const coctailsStorage = new HashStorage();
-coctailsStorage.addValue('Mahito', {
+coctailsStorage.addValue('Махито', {
     alcogol: true,
     engradience: [{
         name: 'белый ром',
@@ -85,7 +85,7 @@ coctailsStorage.addValue('Mahito', {
     },
     recept: ['Положи в хайбол лайм 3 дольки и подави мадлером', 'Возьми мяту 10 листиков в одну руку и хлопни по ним другой рукой', 'Положи мяту в хайбол', 'Наполни бокал дробленым льдом доверху', 'Добавь сахарный сироп 15 мл и белый ром 50 мл', 'Долей содовую доверху и аккуратно размешай коктейльной ложкой', 'Досыпь немного дробленого льда', 'Укрась веточкой мяты и долькой лайма'],
 });
-coctailsStorage.addValue('Margarita', {
+coctailsStorage.addValue('Маргарита', {
     alcogol: true,
     engradience: [{
         name: 'серебрянная текила',
@@ -150,7 +150,7 @@ coctailsStorage.addValue('Margarita', {
     },
     recept: ['Сделай на бокале для маргариты соленую окаемку', 'Налей в шейкер лаймовый сок 30 мл, сахарный сироп 10 мл, ликер трипл сек 25 мл и серебряную текилу 50 мл', 'Наполни шейкер кубиками льда и взбей', 'Перелей через стрейнер в охлажденный бокал для маргариты', 'Укрась кружком лайма'],
 });
-coctailsStorage.addValue('Negroni', {
+coctailsStorage.addValue('Негрони', {
     alcogol: true,
     engradience: [{
         name: 'лондонский сухой джин',
@@ -197,7 +197,7 @@ coctailsStorage.addValue('Negroni', {
     },
     recept: ['Наполни рокс кубиками льда доверху', 'Налей в бокал красный вермут 30 мл и красный биттер 30 мл', 'Добавь джин 30 мл и размешай коктейльной ложкой', 'Укрась апельсиновой цедрой'],
 });
-coctailsStorage.addValue('SexOnTheBeach', {
+coctailsStorage.addValue('Секс на пляже', {
     alcogol: true,
     engradience: [{
         name: 'водка царская',
@@ -266,6 +266,18 @@ coctailsStorage.addValue('SexOnTheBeach', {
     },
     recept: ['Наполни слинг кубиками льда доверху', 'Налей в шейкер клюквенный сок 40 мл, ананасовый сок 40 мл, персиковый ликер 25 мл и водку 50 мл', 'Наполни шейкер кубиками льда и взбей', 'Перелей через стрейнер в слинг', 'Укрась кусочком ананаса и коктейльной вишней на шпажке'],
 });
+
+
+document.querySelector('.button-add').addEventListener('click', () => {
+    const radio = document.querySelectorAll('.rad');
+    for (let i = 0; i < radio.length; i++) {
+        if (radio[i].checked) {
+            data = radio[i].value
+        break;
+        }
+    }
+    document.querySelector('.out-add').innerHTML = data;
+})
 
 const btnDelete = document.getElementById('delete');
 btnDelete.onclick = function () {
