@@ -268,16 +268,11 @@ coctailsStorage.addValue('Секс на пляже', {
 });
 
 
-document.querySelector('.button-add').addEventListener('click', () => {
-    const radio = document.querySelectorAll('.rad');
-    for (let i = 0; i < radio.length; i++) {
-        if (radio[i].checked) {
-            data = radio[i].value
-        break;
-        }
-    }
-    document.querySelector('.out-add').innerHTML = data;
-})
+const btnAdd = document.getElementById('add');
+btnAdd.onclick = function () {
+    const isAdd = coctailsStorage.alcogol;
+    alert('напиток алкогольный')
+}
 
 const btnDelete = document.getElementById('delete');
 btnDelete.onclick = function () {
