@@ -270,8 +270,14 @@ coctailsStorage.addValue('Секс на пляже', {
 
 const btnAdd = document.getElementById('add');
 btnAdd.onclick = function () {
-    const isAdd = coctailsStorage.alcogol;
-    alert('напиток алкогольный')
+    const isAdd = coctailsStorage.addValue['key'];
+    console.log(alert(isAdd.alcogol))
+}
+
+const btnRecepte = document.getElementById('recepte');
+btnRecepte.onclick = function () {
+    const isRecepte = coctailsStorage.addValue['key'];
+    console.log(alert(isRecepte.recept))
 }
 
 const btnDelete = document.getElementById('delete');
