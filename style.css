@@ -18,29 +18,3 @@ body {
     transition: .5s;
 }
 
-
-/* 
-.button:hover {
-    background-position: right center;
-} */
-/* input[type='checkbox']{
-    display:none;
-}
-label{
-    padding-left: 20px;
-}
-
-label::before{
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 1px solid black;
-    vertical-align: middle;
-}
-input[type='checkbox']:checked + label::before{
-    text-align: center;
-    font-family: sans-serif;
-    border-radius: 50%;
-    content: 'V';
-    background-color: red;
-} */
