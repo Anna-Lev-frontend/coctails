@@ -40,3 +40,14 @@
 .button:active {
   top: 2px;
 }
+h1 {
+font-family: 'Rock Salt', cursive;
+font-style: italic;
+color: orange
+}
+input, textarea {
+    border-color: orangered;
+    border-radius: 5px;
+    padding: 10px 25px;
+    margin: 0 5px 0 5px;
+}
