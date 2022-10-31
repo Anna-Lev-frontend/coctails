@@ -6,7 +6,7 @@ const btnDelete = document.getElementById('delete');
 const btnList = document.getElementById('list');
 
 const defaultCoctails = [{
-    name: 'Махито',
+    name: 'махито',
     alcogol: true,
     engradience: [{
         name: 'белый ром',
@@ -281,8 +281,9 @@ const addEvents = function () {
 
 
     btnRecepte.onclick = function () {
-        const isRecepte = coctailsStorage.addValue['key'];
-        console.log(alert(isRecepte.recept))
+        const askDrink = prompt('Введите название напитка');
+        const isRecepte = coctailsStorage.getValue(askDrink);
+        console.log(isRecepte);
     }
 
     btnDelete.onclick = function () {
@@ -312,34 +313,32 @@ const creatDefaultCoctailStorage = function () {
 }
 // тут мое хранилище коктелей
 const coctailsStorage = creatDefaultCoctailStorage();
-
+//тут формируем наши степы(steps,result)
 btnAdd.onclick = function () {
-    const result = [];
+    const result = {};
     const steps = [
         {
             header: "введите название", inputs: [{
-                type: 'input', value: '', label: 'название', name: ''
+                type: 'input', value: '', label: 'название', name: 'name'
             }
             ]
         },
         {
             header: 'алкогольный', inputs: [
-                { type: 'checkbox', value: true, label: 'да', name: 'alco' },
-                { type: 'checkbox', value: false, label: 'нет', name: 'alco' }
+                { type: 'checkbox', value: true, label: 'да', name: 'alcogol' },
+                { type: 'checkbox', value: false, label: 'нет', name: 'alcogol' }
             ]
-
         },
         {
             header: 'ингредиенты', inputs: [
-                { type: 'input', value: '', label: 'ингредиент', name: '', added: true },
+                { type: 'input', value: '', label: 'ингредиент', name: 'engradience', added: true },
             ]
         },
         {
             header: 'рецепт', inputs: [
-                { type: 'textarea', value: '', label: 'описание', name: '' },
+                { type: 'textarea', value: '', label: 'описание', name: 'recept' },
 
             ]
-
         }
     ]
     creatStape(steps, 0, result);
@@ -347,6 +346,7 @@ btnAdd.onclick = function () {
 }
 const creatInput = function (value, labelText, type, name) {
     const label = document.createElement('label');
+
     let input;
     if (type === 'textarea') {
         input = document.createElement('textarea')
@@ -357,62 +357,65 @@ const creatInput = function (value, labelText, type, name) {
     input.type = type;
     input.name = name;
     input.value = value;
+    input.className = 'input';
     label.append(labelText, input)
 
     return label;
 }
-
+//Все input только здесь
 const creatStape = function (steps, index, result) {
-    if (!steps[index]) {
-        console.log(result);
+    const currentStape = steps[index];
+    //создание элементов
+    if (!currentStape) {
+        coctailsStorage.addValue(result.name, result);
+        console.log(coctailsStorage.getKeys());
         mainContainer.innerHTML = '';
         return
     }
     let inputElements;
     mainContainer.innerHTML = '';
     const addName = document.createElement('h1');
-    addName.innerText = steps[index].header;
-    if (steps[index].inputs[0].added) {
+    addName.innerText = currentStape.header;
+
+    if (currentStape.inputs[0].added) {
         const container = document.createElement('div');
-        const input = creatInput(steps[index].inputs[0].value, steps[index].inputs[0].label, steps[index].inputs[0].type, steps[index].inputs[0].name);
+        const input = creatInput(currentStape.inputs[0].value, currentStape.inputs[0].label, currentStape.inputs[0].type, currentStape.inputs[0].name);
         const btnAddInput = document.createElement('button');
         btnAddInput.innerText = '+';
         btnAddInput.onclick = function () {
-            container.querySelector('input:last-child').after(creatInput(steps[index].inputs[0].value, steps[index].inputs[0].label, steps[index].inputs[0].type, steps[index].inputs[0].name))
+            const input = creatInput(currentStape.inputs[0].value, currentStape.inputs[0].label, currentStape.inputs[0].type, currentStape.inputs[0].name);
+            container.querySelector('input:last-child').after(input)
         }
         container.append(input, btnAddInput);
         inputElements = [container];
     } else {
-        inputElements = steps[index].inputs.map((input) => {
+        inputElements = currentStape.inputs.map((input) => {
             return creatInput(input.value, input.label, input.type, input.name)
         })
     }
-
+    // создание элементов
 
     const btnNext = document.createElement('button');
     btnNext.innerText = 'далее';
     btnNext.onclick = function () {
-
-        const inputs = Array.from(mainContainer.querySelectorAll('input')).map((item) => {
-            console.log(item)
-            return item.value
-
+        //получение значений
+        Array.from(mainContainer.querySelectorAll('.input')).forEach((item) => {
+            if (item.name === 'alcogol' && item.checked || item.name === 'name' || item.name === 'recept') {
+                //console.log(item.value);
+                result[item.name] = item.value;
+                return
+            }
+            if (item.name === 'engradience') {
+                if (!result[item.name]) {
+                    result[item.name] = [];
+                }
+                result[item.name].push(item.value);
+            }
         })
-        const inputsText = Array.from(mainContainer.querySelectorAll('textarea')).map((item) => {
-            console.log(item)
-            return item.value
-        })
-        
-        if (inputs.length) {
-            result.push(inputs)
-        }
-        if (inputsText.length) {
-            result.push(inputsText)
-        }
 
         creatStape(steps, index + 1, result)
     }
     mainContainer.append(addName, ...inputElements, btnNext);
 }
-
+addEvents();
 
