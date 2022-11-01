@@ -66,7 +66,7 @@ const defaultCoctails = [{
     },
     recept: ['Положи в хайбол лайм 3 дольки и подави мадлером', 'Возьми мяту 10 листиков в одну руку и хлопни по ним другой рукой', 'Положи мяту в хайбол', 'Наполни бокал дробленым льдом доверху', 'Добавь сахарный сироп 15 мл и белый ром 50 мл', 'Долей содовую доверху и аккуратно размешай коктейльной ложкой', 'Досыпь немного дробленого льда', 'Укрась веточкой мяты и долькой лайма'],
 }, {
-    name: 'Маргарита',
+    name: 'маргарита',
     alcogol: true,
     engradience: [{
         name: 'серебрянная текила',
@@ -131,7 +131,7 @@ const defaultCoctails = [{
     },
     recept: ['Сделай на бокале для маргариты соленую окаемку', 'Налей в шейкер лаймовый сок 30 мл, сахарный сироп 10 мл, ликер трипл сек 25 мл и серебряную текилу 50 мл', 'Наполни шейкер кубиками льда и взбей', 'Перелей через стрейнер в охлажденный бокал для маргариты', 'Укрась кружком лайма'],
 }, {
-    name: 'Негрони',
+    name: 'негрони',
     alcogol: true,
     engradience: [{
         name: 'лондонский сухой джин',
@@ -178,7 +178,7 @@ const defaultCoctails = [{
     },
     recept: ['Наполни рокс кубиками льда доверху', 'Налей в бокал красный вермут 30 мл и красный биттер 30 мл', 'Добавь джин 30 мл и размешай коктейльной ложкой', 'Укрась апельсиновой цедрой'],
 }, {
-    name: 'Секс на пляже',
+    name: 'секс на пляже',
     alcogol: true,
     engradience: [{
         name: 'водка царская',
@@ -283,6 +283,37 @@ const addEvents = function () {
     btnRecepte.onclick = function () {
         const askDrink = prompt('Введите название напитка');
         const isRecepte = coctailsStorage.getValue(askDrink);
+        //создаем div
+        const div = document.createElement('div');
+        div.classList.add('wrapper');//присваиваем class div
+
+        const header = document.createElement('h1');//создаем h1
+        header.innerText = isRecepte.name;//выводим в html название напитка
+        div.append(header);// помещаем h1 во внутри div
+
+        const pEngradience = document.createElement('p');
+        pEngradience.classList.add('p');
+        div.append(pEngradience);
+        pEngradience.textContent = 'Необходимые ингредиенты:'
+
+        const ul = document.createElement('ul');
+        ul.classList.add('ulEngradience');
+        //ul.innerHTML = isRecepte.engradience
+        div.append(ul);
+
+        const li = document.createElement('li');
+        li.classList.add('liEngradience');
+        li.innerHTML = isRecepte.engradience;
+        ul.append(li);
+
+        const pRecept = document.createElement('p');
+        pRecept.classList.add('p');
+        div.append(pRecept);
+        pRecept.textContent = 'Рецепт приготовления:'
+    
+        //помещаем содержимое div в main
+        mainContainer.append(div);
+
         console.log(isRecepte);
     }
 
@@ -412,7 +443,6 @@ const creatStape = function (steps, index, result) {
                 result[item.name].push(item.value);
             }
         })
-
         creatStape(steps, index + 1, result)
     }
     mainContainer.append(addName, ...inputElements, btnNext);
