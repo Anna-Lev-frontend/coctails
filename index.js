@@ -64,7 +64,7 @@ const defaultCoctails = [{
             },
         ],
     },
-    recept: ['Положи в хайбол лайм 3 дольки и подави мадлером', 'Возьми мяту 10 листиков в одну руку и хлопни по ним другой рукой', 'Положи мяту в хайбол', 'Наполни бокал дробленым льдом доверху', 'Добавь сахарный сироп 15 мл и белый ром 50 мл', 'Долей содовую доверху и аккуратно размешай коктейльной ложкой', 'Досыпь немного дробленого льда', 'Укрась веточкой мяты и долькой лайма'],
+    recept: ['Положи в хайбол лайм 3 дольки и подави мадлером', 'возьми мяту 10 листиков в одну руку и хлопни по ним другой рукой', 'положи мяту в хайбол', 'наполни бокал дробленым льдом доверху', 'добавь сахарный сироп 15 мл и белый ром 50 мл', 'долей содовую доверху и аккуратно размешай коктейльной ложкой', 'досыпь немного дробленого льда', 'укрась веточкой мяты и долькой лайма'],
 }, {
     name: 'маргарита',
     alcogol: true,
@@ -283,34 +283,64 @@ const addEvents = function () {
     btnRecepte.onclick = function () {
         const askDrink = prompt('Введите название напитка');
         const isRecepte = coctailsStorage.getValue(askDrink);
-        //создаем div
-        const div = document.createElement('div');
+
+        const div = document.createElement('div');//создаем div
         div.classList.add('wrapper');//присваиваем class div
 
         const header = document.createElement('h1');//создаем h1
         header.innerText = isRecepte.name;//выводим в html название напитка
-        div.append(header);// помещаем h1 во внутри div
+        div.append(header);// помещаем h1 во внутрь div
 
-        const pEngradience = document.createElement('p');
-        pEngradience.classList.add('p');
-        div.append(pEngradience);
-        pEngradience.textContent = 'Необходимые ингредиенты:'
+        const textAlcogol = document.createElement('h3');
+        textAlcogol.classList.add('h3');
+        div.append(textAlcogol);
+        textAlcogol.textContent = 'алкогольный:';
 
-        const ul = document.createElement('ul');
-        ul.classList.add('ulEngradience');
-        //ul.innerHTML = isRecepte.engradience
-        div.append(ul);
+        const pAlcogol = document.createElement('p');
+        pAlcogol.classList.add('pAlcogol');
+        pAlcogol.innerHTML = isRecepte.alcogol;
+        div.append(pAlcogol);
 
-        const li = document.createElement('li');
-        li.classList.add('liEngradience');
-        li.innerHTML = isRecepte.engradience;
-        ul.append(li);
+        const textEngradience = document.createElement('h3');
+        textEngradience.classList.add('h3');
+        div.append(textEngradience);
+        textEngradience.textContent = 'Необходимые ингредиенты:'
 
-        const pRecept = document.createElement('p');
-        pRecept.classList.add('p');
-        div.append(pRecept);
-        pRecept.textContent = 'Рецепт приготовления:'
-    
+        const ulEngradience = document.createElement('ul');
+        ulEngradience.classList.add('ulEngradience');
+        div.append(ulEngradience);
+
+        const liEngradience = document.createElement('li');
+        liEngradience.classList.add('liEngradience');
+        liEngradience.innerHTML = isRecepte.engradience;
+        ulEngradience.append(liEngradience);
+
+        const textAccessories = document.createElement('h3');
+        textAccessories.classList.add('h3');
+        div.append(textAccessories);
+        textAccessories.textContent = 'Необходимые аксессуары:'
+
+        const ulAccessories = document.createElement('ul');
+        ulAccessories.classList.add('ulAccessories');
+        div.append(ulAccessories);
+
+        const liAccessories = document.createElement('li');
+        liAccessories.classList.add('liAccessories');
+        liAccessories.innerHTML = isRecepte.accessories;
+        ulAccessories.append(liAccessories);
+
+        const textRecepte = document.createElement('h3');
+        textRecepte.classList.add('h3');
+        div.append(textRecepte);
+        textRecepte.textContent = 'Рецепт приготовления:'
+
+        const p = document.createElement('p');
+        p.classList.add('pRecept');
+        p.innerHTML = isRecepte.recept;
+        div.append(p);
+
+        const img = document.createElement('img')
+
         //помещаем содержимое div в main
         mainContainer.append(div);
 
@@ -330,8 +360,25 @@ const addEvents = function () {
     }
 
     btnList.onclick = function () {
+        const divList = document.createElement('div');
+        divList.classList = ('classList');
 
-        alert(coctailsStorage.getKeys())
+        const headerList = document.createElement('h1');
+        headerList.classList.add('h1');
+        divList.append(headerList);
+        headerList.textContent = 'Список всех коктелей:'
+
+        const ulList = document.createElement('ul');
+        ulList.classList.add('ulList');
+        divList.append(ulList);
+
+        const liList = document.createElement('li');
+        liList.classList.add('liList');
+        liList.innerHTML = coctailsStorage.getKeys();
+        ulList.append(liList);
+
+        mainContainer.append(divList);
+       console.log(coctailsStorage.getKeys())
     }
 }
 
