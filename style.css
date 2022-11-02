@@ -39,15 +39,20 @@
 .button:active {
   top: 2px;
 }
+main{
+  width: 700px;
+
+}
 h1 {
 font-family: 'Rock Salt', cursive;
 font-style: italic;
-color: orange
+color: orange;
+text-align: center;
 }
 h2 {
 font-family: 'Rock Salt', cursive;
 font-style: italic;
-color: green;
+color: rgb(185, 244, 9);
 text-decoration: underline;
 
 
@@ -59,7 +64,6 @@ input, textarea {
     margin: 0 5px 0 5px;
 }
 p{
-  width: 700px;
   font-family: 'Rock Salt';
   font-style : italic;
   text-indent: 20px;
