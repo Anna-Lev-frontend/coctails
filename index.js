@@ -1,4 +1,3 @@
-
 const mainContainer = document.getElementById('mainContainer');
 const btnAdd = document.getElementById('add');
 const btnRecepte = document.getElementById('recepte');
@@ -39,7 +38,7 @@ const defaultCoctails = [{
         unit: 'г',
     }
     ],
-   
+
     recept: ['Положи в хайбол лайм 3 дольки и подави мадлером', 'возьми мяту 10 листиков в одну руку и хлопни по ним другой рукой', 'положи мяту в хайбол', 'наполни бокал дробленым льдом доверху', 'добавь сахарный сироп 15 мл и белый ром 50 мл', 'долей содовую доверху и аккуратно размешай коктейльной ложкой', 'досыпь немного дробленого льда', 'укрась веточкой мяты и долькой лайма'],
 }, {
     name: 'маргарита',
@@ -80,7 +79,7 @@ const defaultCoctails = [{
         unit: 'г',
     }
     ],
-    
+
     recept: ['Сделай на бокале для маргариты соленую окаемку', 'налей в шейкер лаймовый сок 30 мл, сахарный сироп 10 мл, ликер трипл сек 25 мл и серебряную текилу 50 мл', 'наполни шейкер кубиками льда и взбей', 'перелей через стрейнер в охлажденный бокал для маргариты', 'укрась кружком лайма'],
 }, {
     name: 'негрони',
@@ -111,7 +110,7 @@ const defaultCoctails = [{
         unit: 'г',
     }
     ],
-   
+
     recept: ['Наполни рокс кубиками льда доверху', 'налей в бокал красный вермут 30 мл и красный биттер 30 мл', 'добавь джин 30 мл и размешай коктейльной ложкой', 'укрась апельсиновой цедрой'],
 }, {
     name: 'секс на пляже',
@@ -152,7 +151,7 @@ const defaultCoctails = [{
         unit: 'г',
     }
     ],
-    
+
     recept: ['Наполни слинг кубиками льда доверху', 'налей в шейкер клюквенный сок 40 мл, ананасовый сок 40 мл, персиковый ликер 25 мл и водку 50 мл', 'наполни шейкер кубиками льда и взбей', 'нерелей через стрейнер в слинг', 'укрась кусочком ананаса и коктейльной вишней на шпажке'],
 }]
 
@@ -187,9 +186,6 @@ class HashStorage {
 
 const addEvents = function () {
 
-
-
-
     btnDelete.onclick = function () {
         mainContainer.innerHTML = '';
         const answer = prompt('Введите название напитка для удаления');
@@ -205,13 +201,9 @@ const addEvents = function () {
 
     btnList.onclick = function () {
         mainContainer.innerHTML = '';
-        const divList = document.createElement('div');
-        divList.classList = ('classList');
-
-        const headerList = document.createElement('h1');
-        headerList.classList.add('h1');
-        divList.append(headerList);
-        headerList.textContent = 'Список всех коктелей:'
+        
+        const headerList = createElement('h1', 'hHeader', 'Список всех коктелей:');
+        const divList = createElement('div','classList',headerList);
 
         const ulList = document.createElement('ul');
         ulList.classList.add('ulList');
@@ -277,27 +269,26 @@ btnRecepte.onclick = function () {
     const textEngradience = createElement('h2', 'textHeader', 'Необходимые ингредиенты:')
     const liEngradience = isRecepte.engradience.map((item) => createElement('li', 'liEngradience', `${item.name} ${item.amount} ${item.unit}`));
     const ulEngradience = createElement('ul', 'ulEngradience', liEngradience)
-    const textRecepte = createElement('h2','textRecepte', 'Рецепт приготовления:');
-    const p = createElement('p','pRecept', isRecepte.recept);
+    const textRecepte = createElement('h2', 'textRecepte', 'Рецепт приготовления:');
+    const p = createElement('p', 'pRecept', isRecepte.recept);
     //помещаем содержимое div в main
-    const div = createElement('div', 'wrapper', [header, textAlcogol, pAlcogol, textEngradience, ulEngradience, textRecepte,p])
+    const div = createElement('div', 'wrapper', [header, textAlcogol, pAlcogol, textEngradience, ulEngradience, textRecepte, p])
     mainContainer.append(div);
 
     console.log(isRecepte);
 }
 const createElement = function (tag, className, child) {
-    
+
     const element = document.createElement(tag);
-    console.log(element)
+    //console.log(element)
     element.classList.add(className);
     if (Array.isArray(child)) {
         element.append(...child)
-    } else{
-       element.append(child) 
+    } else {
+        element.append(child)
     }
     return element
 }
-
 const creatInput = function (value, labelText, type, name) {
     const label = document.createElement('label');
 
@@ -376,9 +367,6 @@ addEvents();
 // const newArray = array.map((item)=> {
 //     const elem = document.createElement('div')
 //     elem.innerText = item
-
 //     return elem
-
-    
 // })
 // console.log(newArray)
