@@ -39,31 +39,7 @@ const defaultCoctails = [{
         unit: 'г',
     }
     ],
-    accessories: {
-        unit: 'шт',
-        things: [
-            {
-                name: 'хайбол',
-                amoutn: 1,
-            },
-            {
-                name: 'мадлер',
-                amoutn: 1,
-            },
-            {
-                name: 'джиггер',
-                amoutn: 1,
-            },
-            {
-                name: 'коктельная ложка',
-                amoutn: 1,
-            },
-            {
-                name: 'трубочка',
-                amoutn: 2,
-            },
-        ],
-    },
+   
     recept: ['Положи в хайбол лайм 3 дольки и подави мадлером', 'возьми мяту 10 листиков в одну руку и хлопни по ним другой рукой', 'положи мяту в хайбол', 'наполни бокал дробленым льдом доверху', 'добавь сахарный сироп 15 мл и белый ром 50 мл', 'долей содовую доверху и аккуратно размешай коктейльной ложкой', 'досыпь немного дробленого льда', 'укрась веточкой мяты и долькой лайма'],
 }, {
     name: 'маргарита',
@@ -104,32 +80,8 @@ const defaultCoctails = [{
         unit: 'г',
     }
     ],
-    accessories: {
-        unit: 'шт',
-        things: [
-            {
-                name: 'бокал маргарита',
-                amoutn: 1,
-            },
-            {
-                name: 'шейкер',
-                amoutn: 1,
-            },
-            {
-                name: 'стрейнер',
-                amoutn: 1,
-            },
-            {
-                name: 'джиггер',
-                amoutn: 1,
-            },
-            {
-                name: 'пресс для цитрусовых',
-                amoutn: 1,
-            },
-        ],
-    },
-    recept: ['Сделай на бокале для маргариты соленую окаемку', 'Налей в шейкер лаймовый сок 30 мл, сахарный сироп 10 мл, ликер трипл сек 25 мл и серебряную текилу 50 мл', 'Наполни шейкер кубиками льда и взбей', 'Перелей через стрейнер в охлажденный бокал для маргариты', 'Укрась кружком лайма'],
+    
+    recept: ['Сделай на бокале для маргариты соленую окаемку', 'налей в шейкер лаймовый сок 30 мл, сахарный сироп 10 мл, ликер трипл сек 25 мл и серебряную текилу 50 мл', 'наполни шейкер кубиками льда и взбей', 'перелей через стрейнер в охлажденный бокал для маргариты', 'укрась кружком лайма'],
 }, {
     name: 'негрони',
     alcogol: true,
@@ -159,24 +111,8 @@ const defaultCoctails = [{
         unit: 'г',
     }
     ],
-    accessories: {
-        unit: 'шт',
-        things: [
-            {
-                name: 'рокс',
-                amoutn: 1,
-            },
-            {
-                name: 'джиггер',
-                amoutn: 1,
-            },
-            {
-                name: 'коктельная ложка',
-                amoutn: 1,
-            },
-        ],
-    },
-    recept: ['Наполни рокс кубиками льда доверху', 'Налей в бокал красный вермут 30 мл и красный биттер 30 мл', 'Добавь джин 30 мл и размешай коктейльной ложкой', 'Укрась апельсиновой цедрой'],
+   
+    recept: ['Наполни рокс кубиками льда доверху', 'налей в бокал красный вермут 30 мл и красный биттер 30 мл', 'добавь джин 30 мл и размешай коктейльной ложкой', 'укрась апельсиновой цедрой'],
 }, {
     name: 'секс на пляже',
     alcogol: true,
@@ -216,36 +152,8 @@ const defaultCoctails = [{
         unit: 'г',
     }
     ],
-    accessories: {
-        unit: 'шт',
-        things: [
-            {
-                name: 'слинг',
-                amoutn: 1,
-            },
-            {
-                name: 'шейкер',
-                amoutn: 1,
-            },
-            {
-                name: 'стрейнер',
-                amoutn: 1,
-            },
-            {
-                name: 'джиггер',
-                amoutn: 1,
-            },
-            {
-                name: 'трубочки',
-                amoutn: 2,
-            },
-            {
-                name: 'коктельная шпажка',
-                amoutn: 2,
-            }
-        ],
-    },
-    recept: ['Наполни слинг кубиками льда доверху', 'Налей в шейкер клюквенный сок 40 мл, ананасовый сок 40 мл, персиковый ликер 25 мл и водку 50 мл', 'Наполни шейкер кубиками льда и взбей', 'Перелей через стрейнер в слинг', 'Укрась кусочком ананаса и коктейльной вишней на шпажке'],
+    
+    recept: ['Наполни слинг кубиками льда доверху', 'налей в шейкер клюквенный сок 40 мл, ананасовый сок 40 мл, персиковый ликер 25 мл и водку 50 мл', 'наполни шейкер кубиками льда и взбей', 'нерелей через стрейнер в слинг', 'укрась кусочком ананаса и коктейльной вишней на шпажке'],
 }]
 
 class HashStorage {
@@ -280,74 +188,10 @@ class HashStorage {
 const addEvents = function () {
 
 
-    btnRecepte.onclick = function () {
-        const askDrink = prompt('Введите название напитка');
-        const isRecepte = coctailsStorage.getValue(askDrink);
 
-        const div = document.createElement('div');//создаем div
-        div.classList.add('wrapper');//присваиваем class div
-
-        const header = document.createElement('h1');//создаем h1
-        header.innerText = isRecepte.name;//выводим в html название напитка
-        div.append(header);// помещаем h1 во внутрь div
-
-        const textAlcogol = document.createElement('h3');
-        textAlcogol.classList.add('h3');
-        div.append(textAlcogol);
-        textAlcogol.textContent = 'алкогольный:';
-
-        const pAlcogol = document.createElement('p');
-        pAlcogol.classList.add('pAlcogol');
-        pAlcogol.innerHTML = isRecepte.alcogol;
-        div.append(pAlcogol);
-
-        const textEngradience = document.createElement('h3');
-        textEngradience.classList.add('h3');
-        div.append(textEngradience);
-        textEngradience.textContent = 'Необходимые ингредиенты:'
-
-        const ulEngradience = document.createElement('ul');
-        ulEngradience.classList.add('ulEngradience');
-        div.append(ulEngradience);
-
-        const liEngradience = document.createElement('li');
-        liEngradience.classList.add('liEngradience');
-        liEngradience.innerHTML = isRecepte.engradience;
-        ulEngradience.append(liEngradience);
-
-        const textAccessories = document.createElement('h3');
-        textAccessories.classList.add('h3');
-        div.append(textAccessories);
-        textAccessories.textContent = 'Необходимые аксессуары:'
-
-        const ulAccessories = document.createElement('ul');
-        ulAccessories.classList.add('ulAccessories');
-        div.append(ulAccessories);
-
-        const liAccessories = document.createElement('li');
-        liAccessories.classList.add('liAccessories');
-        liAccessories.innerHTML = isRecepte.accessories;
-        ulAccessories.append(liAccessories);
-
-        const textRecepte = document.createElement('h3');
-        textRecepte.classList.add('h3');
-        div.append(textRecepte);
-        textRecepte.textContent = 'Рецепт приготовления:'
-
-        const p = document.createElement('p');
-        p.classList.add('pRecept');
-        p.innerHTML = isRecepte.recept;
-        div.append(p);
-
-        const img = document.createElement('img')
-
-        //помещаем содержимое div в main
-        mainContainer.append(div);
-
-        console.log(isRecepte);
-    }
 
     btnDelete.onclick = function () {
+        mainContainer.innerHTML = '';
         const answer = prompt('Введите название напитка для удаления');
 
         const isDelete = coctailsStorage.deleteValue(answer);
@@ -360,6 +204,7 @@ const addEvents = function () {
     }
 
     btnList.onclick = function () {
+        mainContainer.innerHTML = '';
         const divList = document.createElement('div');
         divList.classList = ('classList');
 
@@ -378,7 +223,7 @@ const addEvents = function () {
         ulList.append(liList);
 
         mainContainer.append(divList);
-       console.log(coctailsStorage.getKeys())
+        console.log(coctailsStorage.getKeys())
     }
 }
 
@@ -422,6 +267,37 @@ btnAdd.onclick = function () {
     creatStape(steps, 0, result);
 
 }
+btnRecepte.onclick = function () {
+    mainContainer.innerHTML = '';
+    const askDrink = prompt('Введите название напитка');
+    const isRecepte = coctailsStorage.getValue(askDrink);
+    const header = createElement('h1', 'header', isRecepte.name)
+    const textAlcogol = createElement('h2', 'subHeader', 'алкогольный:')
+    const pAlcogol = createElement('p', 'pAlcogol', isRecepte.alcogol ? 'да' : 'нет')
+    const textEngradience = createElement('h2', 'textHeader', 'Необходимые ингредиенты:')
+    const liEngradience = isRecepte.engradience.map((item) => createElement('li', 'liEngradience', `${item.name} ${item.amount} ${item.unit}`));
+    const ulEngradience = createElement('ul', 'ulEngradience', liEngradience)
+    const textRecepte = createElement('h2','textRecepte', 'Рецепт приготовления:');
+    const p = createElement('p','pRecept', isRecepte.recept);
+    //помещаем содержимое div в main
+    const div = createElement('div', 'wrapper', [header, textAlcogol, pAlcogol, textEngradience, ulEngradience, textRecepte,p])
+    mainContainer.append(div);
+
+    console.log(isRecepte);
+}
+const createElement = function (tag, className, child) {
+    
+    const element = document.createElement(tag);
+    console.log(element)
+    element.classList.add(className);
+    if (Array.isArray(child)) {
+        element.append(...child)
+    } else{
+       element.append(child) 
+    }
+    return element
+}
+
 const creatInput = function (value, labelText, type, name) {
     const label = document.createElement('label');
 
@@ -496,3 +372,13 @@ const creatStape = function (steps, index, result) {
 }
 addEvents();
 
+// const array = ['a', 'b', 'c'];
+// const newArray = array.map((item)=> {
+//     const elem = document.createElement('div')
+//     elem.innerText = item
+
+//     return elem
+
+    
+// })
+// console.log(newArray)
