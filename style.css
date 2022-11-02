@@ -47,7 +47,8 @@ color: orange
 h2 {
 font-family: 'Rock Salt', cursive;
 font-style: italic;
-color: blue
+color: green;
+text-decoration: underline;
 
 
 }
